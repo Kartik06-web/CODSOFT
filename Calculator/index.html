@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Gradient Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+    }
+
+    .calculator {
+      background: linear-gradient(135deg, #3a8ef6, #5ce1e6);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 340px;
+      animation: floatUp 1s ease;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .display {
+      background: #f0f9ff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: right;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      overflow-x: auto;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 20px;
+      background: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      background: #d3f3ff;
+      transform: scale(1.05);
+    }
+
+    .btn.operator {
+      background: #7ed6df;
+      color: white;
+    }
+
+    .btn.equal {
+      background: #48dbfb;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .btn.clear {
+      background: #ff7675;
+      color: white;
+    }
+
+    .btn.zero {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="btn clear" onclick="clearDisplay()">C</button>
+      <button class="btn" onclick="append('.')">.</button>
+      <button class="btn" onclick="backspace()">⌫</button>
+      <button class="btn operator" onclick="append('/')">÷</button>
+
+      <button class="btn" onclick="append('7')">7</button>
+      <button class="btn" onclick="append('8')">8</button>
+      <button class="btn" onclick="append('9')">9</button>
+      <button class="btn operator" onclick="append('*')">×</button>
+
+      <button class="btn" onclick="append('4')">4</button>
+      <button class="btn" onclick="append('5')">5</button>
+      <button class="btn" onclick="append('6')">6</button>
+      <button class="btn operator" onclick="append('-')">−</button>
+
+      <button class="btn" onclick="append('1')">1</button>
+      <button class="btn" onclick="append('2')">2</button>
+      <button class="btn" onclick="append('3')">3</button>
+      <button class="btn operator" onclick="append('+')">+</button>
+
+      <button class="btn zero" onclick="append('0')">0</button>
+      <button class="btn equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function append(value) {
+      if (display.innerText === '0') {
+        display.innerText = value;
+      } else {
+        display.innerText += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.innerText = '0';
+    }
+
+    function backspace() {
+      display.innerText = display.innerText.slice(0, -1) || '0';
+    }
+
+    function calculate() {
+      try {
+        display.innerText = eval(display.innerText.replace('×', '*').replace('÷', '/'));
+      } catch (e) {
+        display.innerText = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
