@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartik Yadav | Developer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0caab9;
+      --secondary: #087b8f;
+      --bg-light: #f7f8fc;
+      --bg-dark: #1e1e2f;
+      --text-dark: #222;
+      --text-light: #eee;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      color: var(--text-dark);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+    body.dark {
+      background: linear-gradient(135deg, #12121a, #1e1e2f);
+      color: var(--text-light);
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffdd57;
+    }
+    .toggle-mode {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      cursor: pointer;
+      font-size: 20px;
+      color: white;
+    }
+    .section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero {
+      background: linear-gradient(135deg, #0caab9, #4dd0e1);
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    .hero p {
+      font-size: 20px;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    .section h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--primary);
+    }
+    .section p {
+      text-align: center;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    body.dark .card {
+      background: #2a2a3d;
+      color: var(--text-light);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact input, .contact textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .contact button {
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    img.project-img {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease;
+    }
+    img.project-img:hover {
+      transform: scale(1.05);
+    }
+    .profile-img {
+      display: block;
+      max-width: 200px;
+      width: 100%;
+      border-radius: 50%;
+      margin: 20px auto;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kartik Yadav</h1>
+    <div class="toggle-mode" onclick="toggleMode()">
+      <i class="fas fa-adjust"></i>
+    </div>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact-info">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hi, I'm Kartik Yadav</h1>
+    <p>Web Developer | Creative Coder </p>
+    <img src="images/kartikyadav.jpg" alt="Kartik Yadav" class="profile-img" />
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I am a Web developer who specializes in building elegant and scalable digital solutions. I enjoy designing smooth user experiences, writing clean code, and exploring creative ways to bring interactive content to life.</p>
+  </section>
+
+  <section id="education" class="section">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>B.E. in Computer Engineering</h3>
+        <p>A.C Patil College of Engineering, Kharghar</p>
+      </div>
+      <div class="card">
+        <h3>Diploma in Computer Engineering</h3>
+        <p>Vidyalankar Polytechnic, Wadala<br/>2021 - 2024</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card">C</div>
+      <div class="card">C++</div>
+      <div class="card">Java</div>
+      <div class="card">Python</div>
+      <div class="card">CSS</div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Anime Maker</h3>
+        <p>A creative web app that transforms photos into anime-style art using AI-powered models. Features include live previews, style selection, and image downloads.</p>
+        <img src="https://th.bing.com/th/id/OIP.ayqyzdbYqaRyMxNAA6z71AAAAA?rs=1&pid=ImgDetMain" alt="Anime Maker Screenshot" class="project-img" />
+      </div>
+    </div>
+  </section>
+
+  <section id="resume" class="section">
+  <h2>Resume</h2>
+  <p style="text-align:center">
+    <a href="assets/resume-kartik.pdf" download class="btn">Download My Resume (PDF)</a>
+  </p>
+</section>
+
+<section id="certificates" class="section">
+  <h2>Certificates</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>AI Workshop - NxtWave</h3>
+      <p>Participated in "Build Your Own Generative AI Model" workshop by Abhinav Devaguptapu (NxtWave).</p>
+      <img src="images/nxt.jpg" alt="NxtWave Certificate" class="project-img" />
+    </div>
+    <div class="card">
+      <h3>Software Testing - Infosys</h3>
+      <p>Completed the "Software Testing Fundamentals" course via Infosys Springboard platform.</p>
+      <img src="images/info.jpg" alt="Infosys Certificate" class="project-img" />
+    </div>
+    <div class="card">
+      <h3>Research Paper - IJRPR</h3>
+      <p>Published "Clinic Management System" in IJRPR Journal (Vol 5, Issue 4, April 2024).</p>
+      <img src="images/ij.jpg" alt="IJRPR Certificate" class="project-img" />
+    </div>
+  </div>
+</section>
+
+<section id="contact-info" class="section">
+  <h2>Contact Me</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start;">
+    <div style="flex: 1; min-width: 250px;">
+      <p><i class="fas fa-home"></i>Mumbai, Maharashtra<br><span style="font-size: 14px; color: gray;">Wadala</span></p>
+      <p><i class="fas fa-phone"></i> +91 8097707124</a><br><span style="font-size: 14px; color: gray;"></span></p>
+      <p><i class="fas fa-envelope"></i> kartikmyadav0864@gmail.com</a><br><span style="font-size: 14px; color: gray;">Send us your query anytime!</span></p>
+    </div>
+    <form style="flex: 2; min-width: 300px; display: flex; flex-wrap: wrap; gap: 15px;">
+      <input type="text" placeholder="Enter your name" style="flex: 1 1 48%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: white; color: black;" required>
+      <input type="email" placeholder="Enter email address" style="flex: 1 1 48%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: white; color: black;" required>
+      <textarea placeholder="Enter Message" rows="6" style="flex: 1 1 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; background: white; color: black;"></textarea>
+      <button type="submit" class="btn" style="margin-left: auto;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Kartik Yadav. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMode() {
+    document.body.classList.toggle('dark');
+  }
+</script>
